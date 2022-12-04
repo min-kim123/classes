@@ -1,3 +1,9 @@
+/*
+Author: Min Kim
+Program Description: This program will provide a database for media inputs of type video game, music, and movie. You are able to add to the database, 
+search for a specific year or title in the database, and delete a media in the database by searching for the year or title.
+Date: 12/2/22
+*/
 #include <string.h>
 #include <iostream>
 #include <vector>
