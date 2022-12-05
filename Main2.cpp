@@ -1,9 +1,3 @@
-/*
-Author: Min Kim
-Program Description: This program will provide a database for media inputs of type video game, music, and movie. You are able to add to the database, 
-search for a specific year or title in the database, and delete a media in the database by searching for the year or title.
-Date: 12/2/22
-*/
 #include <string.h>
 #include <iostream>
 #include <vector>
@@ -15,6 +9,37 @@ Date: 12/2/22
 using namespace std;
 
 
+void print(Media *aa) {
+  if (aa->type == 0){//video game
+            VideoGame* childNew = static_cast<VideoGame*>(aa);
+            cout << "------------------------" << endl;
+            cout << "|Video Game|" << endl;
+            cout << "Title: " << childNew->getTitle() << endl;
+            cout << "Rating: " << childNew->getRating() << endl;
+            cout << "Year: " << childNew->getYear() << endl;
+            cout << "Publisher: " << childNew->getPublisher() << endl;
+        }
+        else if(aa->type == 1){//music
+            Music* childNew = static_cast<Music*>(aa);
+            cout << "------------------------" << endl;
+            cout << "|Music|" << endl;
+            cout << "Title: " << childNew->getTitle() << endl;
+            cout << "Artist: " << childNew->getArtist() << endl;
+            cout << "Year: " << childNew->getYear() << endl;
+            cout << "Publisher: " << childNew->getPublisher() << endl;
+            cout << "Duration: " << childNew->getDuration() << endl;
+        }
+        else if (aa->type ==2){//movie
+            Movie* childNew = static_cast<Movie*>(aa);
+            cout << "------------------------" << endl;
+            cout << "|Movie|"<< endl;
+            cout << "Title: " << childNew->getTitle() << endl;
+            cout << "Director: " << childNew->getDirector() << endl;
+            cout << "Year: " << childNew->getYear() << endl;
+            cout << "Rating: " << childNew->getRating() << endl;
+            cout << "Duration: " << childNew->getDuration() << endl;
+        }
+}
 void search(vector <Media*> & pmedia) {//search media database- if multiple objects match, all are listed
   VideoGame videogame;
   Movie movie;
@@ -22,7 +47,7 @@ void search(vector <Media*> & pmedia) {//search media database- if multiple obje
   char toy[10];//title or year
   char title[80];
   int year;
-  Media* child; //pointer to media
+  Media *child; //pointer to media
 
   cout << "Are you searching the Title or the Year? (TITLE, YEAR): " << endl;
   cin >> toy;
@@ -33,35 +58,7 @@ void search(vector <Media*> & pmedia) {//search media database- if multiple obje
     for(vector<Media*>::iterator it = pmedia.begin(); it != pmedia.end(); it++){
       child = (Media*)(*it); // cast parent to child
       if (!strcmp(child->getTitle(), title)){
-        if (child->type == 0){//video game
-            VideoGame* childNew = static_cast<VideoGame*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Video Game|" << endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-        }
-        else if(child->type == 1){//music
-            Music* childNew = static_cast<Music*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Music|" << endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Artist: " << childNew->getArtist() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
-        else if (child->type ==2){//movie
-            Movie* childNew = static_cast<Movie*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Movie|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Director: " << childNew->getDirector() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
+        print(child);
       }
     cout << "------------------------" << endl;
     }
@@ -74,35 +71,7 @@ void search(vector <Media*> & pmedia) {//search media database- if multiple obje
     for(vector<Media*>::iterator it = pmedia.begin(); it != pmedia.end();it++){
       child = (Media*)(*it);
       if (child->getYear()==year){
-        if (child->type == 0){//video game
-            VideoGame* childNew = static_cast<VideoGame*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Video Game|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-        }
-        else if(child->type == 1){//music
-            Music* childNew = static_cast<Music*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Music|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Artist: " << childNew->getArtist() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
-        else if (child->type ==2){//movie
-            Movie* childNew = static_cast<Movie*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Movie|" << endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Director: " << childNew->getDirector() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
+        print(child);
       }
     }
     cout << "------------------------" << endl;
@@ -223,35 +192,7 @@ void delet(vector <Media*> &pmedia) {
     for(vector<Media*>::iterator it = pmedia.begin(); it != pmedia.end();it++){
       child = (Media*)(*it);
       if (!strcmp(child->getTitle(), title)){
-        if (child->type == 0){//video game
-            VideoGame* childNew = static_cast<VideoGame*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Video Game|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-        }
-        else if(child->type == 1){//music
-            Music* childNew = static_cast<Music*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Music|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Artist: " << childNew->getArtist() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
-        else if (child->type ==2){//movie
-            Movie* childNew = static_cast<Movie*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Movie|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Director: " << childNew->getDirector() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
+        print(child);
       }
     cout << "------------------------" << endl;
     }
@@ -265,35 +206,7 @@ void delet(vector <Media*> &pmedia) {
     for(vector<Media*>::iterator it = pmedia.begin(); it != pmedia.end();it++){
       child = (Media*)(*it);
       if (child->getYear()==year){
-        if (child->type == 0){//video game
-            VideoGame* childNew = static_cast<VideoGame*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Video Game|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-        }
-        else if(child->type == 1){//music
-            Music* childNew = static_cast<Music*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Music|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Artist: " << childNew->getArtist() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Publisher: " << childNew->getPublisher() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
-        else if (child->type ==2){//movie
-            Movie* childNew = static_cast<Movie*>(child);
-            cout << "------------------------" << endl;
-            cout << "|Movie|"<< endl;
-            cout << "Title: " << childNew->getTitle() << endl;
-            cout << "Director: " << childNew->getDirector() << endl;
-            cout << "Year: " << childNew->getYear() << endl;
-            cout << "Rating: " << childNew->getRating() << endl;
-            cout << "Duration: " << childNew->getDuration() << endl;
-        }
+        print(child);
       }
     }
     cout << "------------------------" << endl;
