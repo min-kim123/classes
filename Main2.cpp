@@ -183,7 +183,7 @@ void delet(vector <Media*> &pmedia) {
   int input2;//
   char yon; //y/n char input to confirm deletion
 
-  cout << "Do you have the title or year of the media to delete? (TITLE, YEAR): " << endl;
+  cout << "Do you have the title or year of the media to delete?  (TITLE, YEAR): " << endl;
   cin.getline(toy, 80);
   if (strcmp(toy, "TITLE") == 0) {//search for title and output
     input2 = 0;//save for later when confirming deleton
@@ -248,7 +248,7 @@ int main () {
   char input[30];
 
   while (cont == true) {
-    cout << "Would you like to add, search, delete, or quit? (ADD, SEARCH, DELETE, QUIT): ";
+    cout << "Do you want to add, search, delete, or quit? (ADD, SEARCH, DELETE, QUIT): ";
     cin.getline(input, 30);
     if (strcmp(input, "ADD") == 0) {//if input = "ADD" it adds a media element
       add(pmedia);
